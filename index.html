@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPS TASK</title>
+</head>
+<body>
+    <script>
+
+//1.Create a class Rectangle with attributes width and height. Include methods to calculate the area and perimeter of the rectangle.
+
+class Rectangle{
+    constructor(width,height){
+        this.width = width;
+        this.height = height;
+    }
+    area(){
+        return this.width*this.height;
+    }
+    perimeter(){
+        return 2*(this.width+this.height);
+    }
+
+}
+var rect = new Rectangle(4,5);
+console.log("Area of Rectangle is:",rect.area());  //4*5=20
+console.log("Perimeter of Rectangle is:",rect.perimeter());  //2*(4+5)=18
+
+
+//2. Implement a class BankAccount with attributes accountNumber, accountHolder, and balance. 
+// Include methods to deposit and withdraw money from the account.
+
+class BankAccount {
+    constructor(accountNumber, accountHolder, balance = 0) {
+        this.accountNumber = accountNumber;
+        this.accountHolder = accountHolder;
+        this.balance = balance;
+    }
+
+    deposit(amount) {
+        if (amount > 0) this.balance += amount;
+    }
+
+    withdraw(amount) {
+        if (amount > 0 && amount <= this.balance) this.balance -= amount;
+    }
+}
+const myAccount = new BankAccount("9875", "Abhitha Duddu", 1000);
+console.log("Initial Balance:", myAccount.balance);  //1000
+
+myAccount.deposit(500);  
+console.log("Balance after deposit:", myAccount.balance);  //1500
+
+myAccount.withdraw(200); 
+console.log("Balance after withdrawal:", myAccount.balance);  //1300
+
+//3.Develop a class Employee with properties name, position, and salary. 
+// Add a method to calculate the yearly bonus based on the salary.
+
+class Employee{
+    constructor(name,position,salary){
+        this.name = name;
+        this.position = position;
+        this.salary = salary;
+    }
+    yearlyBonus(){
+        const bonus=0.10;
+        return this.salary*bonus;
+    }
+}
+var emp=new Employee("Abhitha","front-end Developer",60000);
+console.log("Yearly Bonus is:",emp.yearlyBonus());//6000
+
+
+
+// 4. Create a class Circle with attribute radius.
+//  Include methods to calculate the circumference and area of the circle.
+
+class Circle{
+    constructor(radius){
+        this.radius = radius;
+    }
+    circumference(){
+        return 2 * Math.PI * this.radius;
+    }
+    area(){
+        return Math.PI*(this.radius*this.radius)
+    }
+}
+var cir=new Circle(6);
+console.log("Circumference of a Circle is:",cir.circumference()); //37.69911184307752
+console.log("Area of Circle is :",cir.area()); // 113.09733552923255
+
+
+
+//5. Implement a class Product with properties name, price, and quantity. 
+// Include a method to calculate the total value of the product based on price and quantity.
+
+class Product{
+    constructor(name,price,quantity){
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+    totalValue(){
+        return this.price*this.quantity;
+    }
+}
+var pro=new Product("Apple",50,2);
+console.log("Total value of the product based on price and quantity is:",pro.totalValue()); //100
+
+
+
+//6.Create a base class Shape with properties name and color.
+//  Implement two subclasses Circle and Rectangle that inherit from Shape and 
+// add specific properties and methods for calculating area and perimeter.
+
+
+
+class Shape{
+    constructor(name,color){
+        this.name = name;
+        this.color = color;
+    }
+}
+class Circle1 extends Shape{
+    constructor(name,color,radius){
+        super(name,color)
+        this.radius=radius;
+        }
+    perimeter(){
+        return 2 * Math.PI * this.radius;
+    }
+    area(){
+        return Math.PI*(this.radius*this.radius);
+    }
+}
+class Rectangle1 extends Shape{
+    constructor(name,color,length,breadth){
+        super(name,color)
+        this.length = length;
+        this.breadth = breadth;
+    }
+    perimeter(){
+        return 2*(this.length+this.breadth);
+    }
+    area(){
+        return this.length*this.breadth;
+    }
+}
+
+var cir=new Circle1("circle","red",5);
+console.log(cir);
+console.log("perimeter of circle is:",cir.perimeter());//31.41592653589793
+console.log("Area of circle is",cir.area());// 78.53981633974483
+
+var rec=new Rectangle1("rectangle","blue",5,6);
+console.log(rec);
+console.log("perimeter of a rectangle is:",rec.perimeter());//22
+console.log("Area of a rectangle is:",rec.area());//30
+
+
+
+
+//7.Implement a base class Vehicle with properties make, model, and year.
+//  Create subclasses Car and Motorcycle that inherit from Vehicle and add specific properties and methods.
+
+
+class Vehicle{
+    constructor(make,model,year){
+        this.make=make;
+        this.model=model;
+        this.year=year;
+    }
+}
+
+class Car extends Vehicle{
+    constructor(make,model,year,type){
+        super(make,model,year)
+        this.type=type;
+        
+    }
+    speed(){
+        return `Its too fast`;
+    }
+    recovery(){
+        return `It takes time`;
+    }
+
+}
+
+class MotorCycle  extends Vehicle{
+    constructor(make,model,year,color){
+        super(make,model,year)
+        this.color=color;
+        
+    }
+
+    speed(){
+        return `Its very Fast`;
+    }
+    recovery(){
+        return `Its very fast recovery`;
+    }
+
+}
+var cars=new Car("silver","round",2020,"ferrari");
+console.log(cars);
+console.log(cars.speed()); //Its too fast
+console.log(cars.recovery());//It takes time
+
+var MotorCycles=new MotorCycle("Gold","Rectangle",2024,"blue");
+console.log(MotorCycles);
+console.log(MotorCycles.speed()); //Its very Fast
+console.log(MotorCycles.recovery());//Its very fast recovery
+
+
+
+    </script>
+</body>
+</html>
